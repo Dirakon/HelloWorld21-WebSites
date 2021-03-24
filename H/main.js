@@ -1,3 +1,4 @@
+
 let collection = document.getElementsByTagName('body');
 
 /*Функция, обрабатывающая клик по кнопке и меняющая её цвет на красный.*/

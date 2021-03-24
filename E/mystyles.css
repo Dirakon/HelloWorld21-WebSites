@@ -1,0 +1,27 @@
+body{
+    font-size: 0;  /* Удаление пустого места между элементами */
+}
+div{
+    width: 9vw;
+    height: 9vh; /* Элемента почти полностью заполняют экран, оставляя небольшое пространство про запас. */
+    display: inline-block;
+}
+div.blank{
+    background-color: wheat;
+}
+div.snake{
+    background-color: darkgreen;
+}
+div.apple{
+    background-color: red;
+
+    /* Яблоко будет занимать лишь часть клетки */
+    width: 3vw;
+    height: 3vh;
+    border-top:    3vh solid  wheat;
+    border-right:  3vw solid wheat;
+    border-bottom: 3vh solid wheat;
+    border-left:   3vw solid  wheat;
+}
+
+

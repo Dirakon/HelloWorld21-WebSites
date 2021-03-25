@@ -1,5 +1,3 @@
-let collection = document.getElementsByTagName('body');
-
 onkeyup=handle;
 
 let orderedSells = 2;   // "Заказанная длина" змеи - количество клеток, на которое та должна увеличиться, перед тем, как начать по-настоящему перемещаться
@@ -63,9 +61,9 @@ for (let i = 0; i < 10;++i){
             a.className = "blank";
         }
         thisLine.push(a);   // Сохраняем клетку в памяти.
-        collection.item(0).appendChild(a);  // Добавляем клетку в текущую строку.
+        document.body.appendChild(a);  // Добавляем клетку в текущую строку.
     }
     field.push(thisLine);
     let b = document.createElement('br');   // Переходим на следующую строку.
-    collection.item(0).appendChild(b);
+    document.body.appendChild(b);
 }

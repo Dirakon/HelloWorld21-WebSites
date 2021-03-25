@@ -1,0 +1,25 @@
+body{
+    font-size: 0;  /* Удаление пустого места между элементами */
+    background-color: wheat;
+}
+div{
+    font-size: 10px;
+    display: inline-block;
+    width: 6vw;
+    height: 30vh;
+    border-top:    0.5vh solid  gray;
+    border-bottom: 0.5vh solid gray;
+}
+
+div.white{
+    border-right:  0.5vw solid gray;
+    border-left:   0.5vw solid  gray;
+    background-color: white;
+}
+div.black{
+    color:white;  /*Белый текст*/
+    background-color: black;
+    width:3vw;
+    height: 15vh;
+}
+

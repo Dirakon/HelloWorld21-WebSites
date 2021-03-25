@@ -104,13 +104,13 @@ function move(xIncrement,yIncrement=1) {
     fillWithColor(currentCoords,currentShapeDescription,blankColor,'cell');
     currentCoords.y+=yIncrement;
     currentCoords.x+=xIncrement;
-  //  if (containsType(currentCoords,currentShapeDescription,'figure')){
-  //      currentCoords.y-=yIncrement;
-  //      currentCoords.x-=xIncrement;
-  //      fillWithColor(currentCoords,currentShapeDescription,currentColor,'figure');
-  //      spawnNewShape();
-  //      return;
-  //  }
+    if (containsType(currentCoords,currentShapeDescription,'figure')){
+        currentCoords.y-=yIncrement;
+        currentCoords.x-=xIncrement;
+        fillWithColor(currentCoords,currentShapeDescription,currentColor,'figure');
+        spawnNewShape();
+        return;
+    }
     fillWithColor(currentCoords,currentShapeDescription,currentColor,'figure');
     if (hasThisTypeBelow(currentCoords,currentShapeDescription,'figure')){
         spawnNewShape();
@@ -122,6 +122,7 @@ function move(xIncrement,yIncrement=1) {
 
 let indicator = document.createElement('div');
 indicator.className = 'notDone';
+document.body.appendChild(indicator);
 
 for (let i = 0; i < 10;++i){
     let thisLine = [];

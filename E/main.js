@@ -7,7 +7,7 @@ let orderedSells = 2;   // "Заказанная длина" змеи - коли
 // Функция, ответственная за управление при помощи клавиатуры.
 function handle(e) {
     let coords = [...snake[0]];  //Копируем координаты головы змеи по значению
-    switch (e.key) {
+    switch (e.key.toUpperCase()) {
         case 'W':
             coords[1]-=1;
             break;

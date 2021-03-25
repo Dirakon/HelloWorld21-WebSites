@@ -16,9 +16,10 @@ function handle(e) {
         return;
 
     // Выбираем сторону вращения в зависимости от нажатой клавиши
-    if (e.key === 'D'){
+    let key = e.key.toUpperCase();
+    if (key === 'D'){
         rotationSpeed = idealRotationSpeed;
-    }else if (e.key === 'A'){
+    }else if (key === 'A'){
         rotationSpeed = -idealRotationSpeed;
     }
 }

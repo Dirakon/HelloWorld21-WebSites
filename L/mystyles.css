@@ -1,6 +1,31 @@
+body{
+    font-size: 0;
+    margin: 0;
+}
+.hor,.vert{
+    font-size: 10px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow-wrap: break-spaces;
+}
+.hor{
+    width: 100%;
+}
+.vert{
+    height: 100%;
+    writing-mode: vertical-rl;
+}
+.bigBox{
+    position: relative;
+    display: inline-block;
+    height: 100vh;
+    width: 20vw;
+}
 
-button{
-    display: inline;
-    width: 15vw;
-    height: 10vh;
+.smallBox{
+    position: relative;
+    display: inline-block;
+    height: 20vh;
+    width: 20vw;
 }

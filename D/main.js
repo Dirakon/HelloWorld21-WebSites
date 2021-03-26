@@ -1,5 +1,5 @@
 
-const noteTable = {
+const noteToFrequencyTable = {
     'C':523.3,
     'C#':554.4,
     'D':587.3,
@@ -19,26 +19,20 @@ const noteTable = {
     'hE':1319
 }
 
-function keyClicked(event){
-    alert(event);
-}
-
-
 let alreadyCameToBe = [];
 let allWhites= document.getElementsByClassName("white");
 let allBlacks = document.getElementsByClassName("black");
 let allKeys = [...allWhites,...allBlacks];
 for (let i = 0; i < allKeys.length;++i){
     let key = allKeys[i];
-    let value = key.innerHTML;
-    if (alreadyCameToBe.includes(value)){
-        value = 'h' + value;
+    if (alreadyCameToBe.includes(key.innerHTML)){
+        key.id = 'h' +  key.innerHTML;
     }else{
-        alreadyCameToBe.push(value);
+        key.id = key.innerHTML;
+        alreadyCameToBe.push(key.id);
     }
-    key.id=value;
     key.onclick=function () {
-        playSound(noteTable[value]);
+        playSound(noteToFrequencyTable[key.id]);
     };
 }
 
@@ -49,9 +43,10 @@ function playSound(frequency) {
     let  gain = audioContext.createGain()
     oscillator.connect(gain)
     gain.connect(audioContext.destination)
-    //let frequency = 523.3
-    oscillator.frequency.value = frequency
     oscillator.start(0)
+
+
+    oscillator.frequency.value = frequency
     gain.gain.exponentialRampToValueAtTime(
         0.00001, audioContext.currentTime + 10
     )

@@ -1,24 +1,25 @@
 
-// Переменная, позволяющая отличить четные нажатия от нечетных
-clickDone = false
 
 // Функция, обрабатывающая клики
 function handle(event){
     // Делаем линию выделяющейся
-    ctx.strokeStyle = 'black';
-    ctx.lineWidth = 5;
 
-    // Рисуем линию или ставим точку в зависимости от четности клика
-    if (!clickDone){
-        ctx.beginPath();
-        ctx.moveTo(event.clientX, event.clientY);
-        clickDone = true
-    }else {
-        ctx.lineTo(event.clientX, event.clientY);
-        ctx.closePath();
-        ctx.stroke();
-        clickDone = false
+    let elements = document.getElementsByClassName('inputer');
+
+    let a = parseFloat(elements[0].innerHTML), b = parseFloat(elements[1].innerHTML), c = parseFloat(elements[2].innerHTML);
+
+
+    ctx.fillStyle = 'black';
+    for (let x = 0; x < width;++x){
+        let functionalX = (x - width/2)/(width/2)*100;
+        let functionalY = 100 - (a*functionalX*functionalX + b*functionalX + c);
+        if (functionalY < 0 || functionalY > 100)
+            continue;
+        let normalY = parseInt(height*(functionalY/100))
+       // alert([normalY,x]);
+        ctx.fillRect(x,normalY,5,5); // fill in the pixel at (10,10)
     }
+
 }
 // Находим полотно и настраиваем его
 const canvas = document.querySelector('.myCanvas');
@@ -35,4 +36,4 @@ ctx.fillStyle = 'wheat';
 ctx.fillRect(0,0,width,height);
 
 // Соглашаемся принимать клики
-document.body.onclick=handle;
+document.querySelector('button').onclick=handle;

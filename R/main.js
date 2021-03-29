@@ -13,6 +13,12 @@ const figureTypes = {
     3: [ [' ','*','*'],
          ['*','*',' ']]
 }
+
+// Заранее загружаем необходимые звуки (без этого первое время звуков не будет)
+new Audio('https://rpg.hamsterrepublic.com/wiki-images/d/db/Crush8-Bit.ogg')
+new Audio('https://rpg.hamsterrepublic.com/wiki-images/2/21/Collision8-Bit.ogg')
+
+
 let typesToAppear = [2,2,3,2,1,1]
 let currentShapeDescription = undefined;
 let currentColor = undefined;
@@ -109,13 +115,23 @@ function move(xIncrement,yIncrement=1) {
         currentCoords.x-=xIncrement;
         fillWithColor(currentCoords,currentShapeDescription,currentColor,'figure');
         spawnNewShape();
+        // Звук приземления.
+        (new Audio('https://rpg.hamsterrepublic.com/wiki-images/d/db/Crush8-Bit.ogg')).play();
         return;
     }
     fillWithColor(currentCoords,currentShapeDescription,currentColor,'figure');
     if (hasThisTypeBelow(currentCoords,currentShapeDescription,'figure')){
         spawnNewShape();
+        // Звук приземления.
+        (new Audio('https://rpg.hamsterrepublic.com/wiki-images/d/db/Crush8-Bit.ogg')).play();
     }else if (currentCoords.y + currentShapeDescription.length >= field.length){
         spawnNewShape();
+        // Звук приземления.
+        (new Audio('https://rpg.hamsterrepublic.com/wiki-images/d/db/Crush8-Bit.ogg')).play();
+    }else{
+
+        // Звук полёта.
+        (new Audio('https://rpg.hamsterrepublic.com/wiki-images/2/21/Collision8-Bit.ogg')).play();
     }
 
 }

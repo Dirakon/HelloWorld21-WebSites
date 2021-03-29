@@ -6,8 +6,8 @@ div{
     /* Позволяем элементам стоять в одном ряду. */
     display: inline-block;
     /* Настройка размеров таким образом, чтобы элементы почти полностью заполняли экран. */
-    width: 10vw;
-    height: 10vh;
+    width: 9vw;
+    height: 9vh;
 }
 div.blank{
     background-color: wheat;
@@ -19,8 +19,8 @@ div.apple{
     background-color: red;
 
     /* Яблоко будет занимать лишь часть клетки */
-    width: 4vw;
-    height: 4vh;
+    width: 3vw;
+    height: 3vh;
     border-top:    3vh solid  wheat;
     border-right:  3vw solid wheat;
     border-bottom: 3vh solid wheat;

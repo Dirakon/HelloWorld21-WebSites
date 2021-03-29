@@ -2,6 +2,9 @@
 // Переменная, позволяющая отличить четные нажатия от нечетных
 clickDone = false
 
+// Заранее загружаем необходимые звуки (без этого первое время звуков не будет)
+new Audio('http://onj3.andrelouis.com/phonetones/unzipped/Nokia/C6-00/ui-pen_down04.wav')
+
 // Функция, обрабатывающая клики
 function handle(event){
     // Делаем линию выделяющейся
@@ -17,7 +20,9 @@ function handle(event){
         ctx.lineTo(event.clientX, event.clientY);
         ctx.closePath();
         ctx.stroke();
-        clickDone = false
+        clickDone = false;
+        // Звук для рисования
+        (new Audio('http://onj3.andrelouis.com/phonetones/unzipped/Nokia/C6-00/ui-pen_down04.wav')).play();
     }
 }
 // Находим полотно и настраиваем его

@@ -1,4 +1,6 @@
 
+// Заранее загружаем необходимые звуки (без этого первое время звуков не будет)
+new Audio('https://rpg.hamsterrepublic.com/wiki-images/8/8e/Confirm8-Bit.ogg')
 
 // Функция, обрабатывающая клики
 function handle(event){
@@ -19,6 +21,8 @@ function handle(event){
        // alert([normalY,x]);
         ctx.fillRect(x,normalY,5,5); // fill in the pixel at (10,10)
     }
+    // Включаем звук нажатия
+    (new Audio('https://rpg.hamsterrepublic.com/wiki-images/8/8e/Confirm8-Bit.ogg')).play();
 
 }
 // Находим полотно и настраиваем его

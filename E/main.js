@@ -2,6 +2,11 @@ onkeyup=handle;
 
 let orderedSells = 2;   // "Заказанная длина" змеи - количество клеток, на которое та должна увеличиться, перед тем, как начать по-настоящему перемещаться
 
+// Заранее загружаем необходимые звуки (без этого первое время звуков не будет)
+new Audio('https://rpg.hamsterrepublic.com/wiki-images/2/21/Collision8-Bit.ogg')
+new Audio('http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/eatpellet.ogg')
+new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_shoot.wav')
+
 // Функция, ответственная за управление при помощи клавиатуры.
 function handle(e) {
     let coords = [...snake[0]];  //Копируем координаты головы змеи по значению
@@ -22,12 +27,20 @@ function handle(e) {
             return;
     }
     if (field[coords[1]][coords[0]].className === 'snake' ) {   // Запрещаем наступление на часть тела
+        // Включаем звук столкновения
+        (new Audio('https://rpg.hamsterrepublic.com/wiki-images/2/21/Collision8-Bit.ogg')).play();
         return;
     }
     let appleFormatCoordinates = coords[0]*10+coords[1];    // Переводим уже сдвинутые координаты в формат, которым описаны координаты яблок
     if (appleCoords.includes(appleFormatCoordinates)){  //Если мы наступили на яблоко, удаляем его и увеличиваем заказанную длину.
+        // Включаем звук поедания яблока
+        (new Audio('http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/eatpellet.ogg')).play();
         appleCoords.splice(appleCoords.indexOf(appleFormatCoordinates),1);
         orderedSells+=orderedCellsPerApple;
+    }else{
+
+        // Включаем звук движения
+        (new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_shoot.wav')).play();
     }
     snake.splice(0,0,[coords[0],coords[1]]);    //Добавляем новый блок змеи на данной клетке.
     field[coords[1]][coords[0]].className = "snake";

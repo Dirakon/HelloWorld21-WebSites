@@ -13,6 +13,8 @@ const higherBarWidthPercent=20;
 const lowerBarWidthPercent=40;
 
 
+// Заранее загружаем необходимые звуки (без этого первое время звуков не будет)
+new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3')
 
 // Функция, обрабатывающая клики
 function handle(event){
@@ -109,6 +111,10 @@ ctx.fillRect(0,0,width,height);
 setInterval(function () {
     for (let i = 0; i < allLines.length;++i){
         let collision = getCollision(allLines[i].position,allLines[i].direction,speed);
+        if (collision.vertical || collision.horizontal){
+            // Играем звук столкновения
+            (new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/pang/pop.mp3')).play();
+        }
         if (collision.vertical){
             allLines[i].direction.y = -allLines[i].direction.y
         }

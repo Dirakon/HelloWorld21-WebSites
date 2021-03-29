@@ -10,10 +10,12 @@ function handle(event){
 
     // Рисуем линию или ставим точку в зависимости от четности клика
     if (!clickDone){
+        ctx.beginPath();
         ctx.moveTo(event.clientX, event.clientY);
         clickDone = true
     }else {
         ctx.lineTo(event.clientX, event.clientY);
+        ctx.closePath();
         ctx.stroke();
         clickDone = false
     }

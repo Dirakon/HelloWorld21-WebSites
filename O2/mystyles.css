@@ -1,0 +1,10 @@
+body{
+    font-size: 0;  /* Удаление пустого места между элементами */
+    margin: 0;
+}
+canvas{
+    width: 100vw;
+    height: 90vh;
+}
+
+

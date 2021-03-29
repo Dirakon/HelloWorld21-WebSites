@@ -20,6 +20,12 @@ function handle(event){
     ctx.strokeStyle = 'black';
     ctx.lineWidth = 5;
 
+    // Нельзя ставить точки за пределами 'L'
+    let collision = getCollision({x:event.clientX, y:event.clientY},{x:0,y:0},0)
+    if (collision.vertical || collision.horizontal){
+        return;
+    }
+
     // Рисуем линию или ставим точку в зависимости от четности клика
     if (!clickDone){
         startOfLine = {x:event.clientX, y:event.clientY};

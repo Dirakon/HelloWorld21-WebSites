@@ -9,7 +9,9 @@ new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInva
 
 // Функция, ответственная за управление при помощи клавиатуры.
 function handle(e) {
-    let coords = [...snake[0]];  //Копируем координаты головы змеи по значению
+
+    //Копируем координаты головы змеи по значению
+    let coords = [...snake[0]];
     switch (e.key.toUpperCase()) {
         case 'W':
             coords[1]-=1;
@@ -26,44 +28,58 @@ function handle(e) {
         default:
             return;
     }
-    if (field[coords[1]][coords[0]].className === 'snake' ) {   // Запрещаем наступление на часть тела
+
+    // Запрещаем наступление на часть тела
+    if (field[coords[1]][coords[0]].className === 'snake' ) {
         // Включаем звук столкновения
         (new Audio('https://rpg.hamsterrepublic.com/wiki-images/2/21/Collision8-Bit.ogg')).play();
         return;
     }
-    let appleFormatCoordinates = coords[0]*10+coords[1];    // Переводим уже сдвинутые координаты в формат, которым описаны координаты яблок
-    if (appleCoords.includes(appleFormatCoordinates)){  //Если мы наступили на яблоко, удаляем его и увеличиваем заказанную длину.
+
+    // Переводим уже сдвинутые координаты в формат, которым описаны координаты яблок
+    let appleFormatCoordinates = coords[0]*10+coords[1];
+
+    //Если мы наступили на яблоко, удаляем его и увеличиваем заказанную длину.
+    if (appleCoords.includes(appleFormatCoordinates)){
         // Включаем звук поедания яблока
         (new Audio('http://commondatastorage.googleapis.com/codeskulptor-demos/pyman_assets/eatpellet.ogg')).play();
         appleCoords.splice(appleCoords.indexOf(appleFormatCoordinates),1);
         orderedSells+=orderedCellsPerApple;
     }else{
-
         // Включаем звук движения
         (new Audio('http://codeskulptor-demos.commondatastorage.googleapis.com/GalaxyInvaders/alien_shoot.wav')).play();
     }
-    snake.splice(0,0,[coords[0],coords[1]]);    //Добавляем новый блок змеи на данной клетке.
+
+    //Добавляем новый блок змеи на данной клетке.
+    snake.splice(0,0,[coords[0],coords[1]]);
     field[coords[1]][coords[0]].className = "snake";
     if (orderedSells !== 0){
         orderedSells--;
-    }else{  // Если больше не осталось заказанной длины, удаляем последний блок змеи.
+    }else{
+        // Если больше не осталось заказанной длины, удаляем последний блок змеи.
         let lastSnakeId = snake.length-1;
         field[snake[lastSnakeId][1]][snake[lastSnakeId][0]].className="blank";
         snake.splice(lastSnakeId,1);
     }
 }
 
-let appleCoords = [41, 42, 62, 72, 34, 64 ,65, 35 ,47, 48, 67 ] // Координаты яблок в формате *колонка-строка*. Такой формат подходит, т.к. поле 10*10 и на первой колонке или на первом ряду яблок не будет.
+// Координаты яблок в формате *колонка-строка*. Такой формат подходит, т.к. поле 10*10 и на первой колонке или на первом ряду яблок не будет.
+let appleCoords = [41, 42, 62, 72, 34, 64 ,65, 35 ,47, 48, 67 ]
 let field = [];
-const startCoords = 77  // Стартовые координаты змеи.
-const orderedCellsPerApple=3;   // На сколько клеток увеличится змея, попробовав яблоко.
 let snake = [];
+
+// Стартовые координаты змеи.
+const startCoords = 77
+
+// На сколько клеток увеличится змея, попробовав яблоко.
+const orderedCellsPerApple=3;
 
 for (let i = 0; i < 10;++i){
     let thisLine = [];
     for (let j = 0; j < 10;++j){
         let a = document.createElement('div');
-        let coords = j*10 + i;  // Переводим координаты в формат яблок.
+        // Переводим координаты в формат яблок.
+        let coords = j*10 + i;
         if (coords === startCoords) {
             a.className = "snake";
             snake.push([j,i]);
@@ -73,10 +89,16 @@ for (let i = 0; i < 10;++i){
         }else {
             a.className = "blank";
         }
-        thisLine.push(a);   // Сохраняем клетку в памяти.
-        document.body.appendChild(a);  // Добавляем клетку в текущую строку.
+
+        // Сохраняем клетку в памяти.
+        thisLine.push(a);
+
+        // Добавляем клетку в текущую строку.
+        document.body.appendChild(a);
     }
     field.push(thisLine);
-    let b = document.createElement('br');   // Переходим на следующую строку.
+
+    // Переходим на следующую строку.
+    let b = document.createElement('br');
     document.body.appendChild(b);
 }

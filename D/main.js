@@ -1,4 +1,5 @@
 
+// Лист нот и частот, им соответствующих
 const noteToFrequencyTable = {
     'C':523.3,
     'C#':554.4,
@@ -19,18 +20,24 @@ const noteToFrequencyTable = {
     'hE':1319
 }
 
-let alreadyCameToBe = [];
 let allWhites= document.getElementsByClassName("white");
 let allBlacks = document.getElementsByClassName("black");
+
+// Объединяем чёрные и белые клавиши в один лист
 let allKeys = [...allWhites,...allBlacks];
+let alreadyCameToBe = [];
 for (let i = 0; i < allKeys.length;++i){
     let key = allKeys[i];
+
+    // Если мы уже прошли эту клавишу, значит это октава выше
     if (alreadyCameToBe.includes(key.innerHTML)){
         key.id = 'h' +  key.innerHTML;
     }else{
         key.id = key.innerHTML;
         alreadyCameToBe.push(key.id);
     }
+
+    // На клике по клавише будем играть соответстующую ей ноту
     key.onclick=function () {
         playSound(noteToFrequencyTable[key.id]);
     };
@@ -38,6 +45,7 @@ for (let i = 0; i < allKeys.length;++i){
 
 
 function playSound(frequency) {
+    //Создаём аудио контекст и необходимые инструменты
     let audioContext = new AudioContext()
     let oscillator = audioContext.createOscillator()
     let  gain = audioContext.createGain()
@@ -45,7 +53,7 @@ function playSound(frequency) {
     gain.connect(audioContext.destination)
     oscillator.start(0)
 
-
+    // Задаём частоту и настраиваем звук
     oscillator.frequency.value = frequency
     gain.gain.exponentialRampToValueAtTime(
         0.00001, audioContext.currentTime + 10

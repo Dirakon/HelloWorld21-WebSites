@@ -1,6 +1,6 @@
 
 // Переменная, позволяющая отличить четные нажатия от нечетных
-clickDone = false
+let clickDone = false
 
 // Заранее загружаем необходимые звуки (без этого первое время звуков не будет)
 new Audio('http://onj3.andrelouis.com/phonetones/unzipped/Nokia/C6-00/ui-pen_down04.wav')

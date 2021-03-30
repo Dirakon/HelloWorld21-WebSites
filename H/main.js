@@ -12,8 +12,10 @@ for (let i = 0; i < 9;++i){
     for (let j = 0; j < 5;++j){
         let a = document.createElement('button');
         a.onclick = myOnClick;
-        document.body.appendChild(a); // Добавляем кнопку в текущую строку.
+        // Добавляем кнопку в текущую строку.
+        document.body.appendChild(a);
     }
-    let b = document.createElement('br');// Переходим на следующую строку.
+    // Переходим на следующую строку.
+    let b = document.createElement('br');
     document.body.appendChild(b);
 }

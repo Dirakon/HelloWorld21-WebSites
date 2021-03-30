@@ -3,17 +3,22 @@ body{
     background-color: wheat;
 }
 div{
-    font-size: 10px;
+    /*Настройка клавиш*/
+    font-size: 15px;
     display: inline-block;
-    width: 6vw;
-    height: 30vh;
+
+    /*Границы снизу и сверху*/
     border-top:    0.5vh solid  gray;
     border-bottom: 0.5vh solid gray;
 }
 
 div.white{
+    /*Границы сбоку*/
     border-right:  0.5vw solid gray;
     border-left:   0.5vw solid  gray;
+
+    width: 6vw;
+    height: 30vh;
     background-color: white;
 }
 div.black{

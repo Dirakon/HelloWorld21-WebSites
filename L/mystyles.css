@@ -2,30 +2,37 @@ body{
     font-size: 0;  /* Удаление пустого места между элементами */
     margin: 0;
 }
+
+/*Настройка текстовых окошек*/
 .hor,.vert{
     font-size: 10px;
     position: absolute;
-    top: 0;
-    left: 0;
+
+    /*Разделение строк по пробелам*/
     overflow-wrap: break-spaces;
 }
+
 .hor{
     width: 100%;
 }
+
 .vert{
     height: 100%;
+    /* Вертикальное написание справа налево */
     writing-mode: vertical-rl;
 }
-.bigBox{
+
+/* Настройка больших дивов, вмещающих текстовые окошки */
+.bigBox, .smallBox{
     position: relative;
     display: inline-block;
-    height: 100vh;
     width: 20vw;
 }
 
+.bigBox{
+    height: 100vh;
+}
+
 .smallBox{
-    position: relative;
-    display: inline-block;
     height: 20vh;
-    width: 20vw;
 }

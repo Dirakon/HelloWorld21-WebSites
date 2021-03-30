@@ -4,7 +4,7 @@ let indicator = document.createElement('div');
 indicator.className = "not_done";
 document.body.appendChild(indicator);
 
-let textMesh = 0;
+let textMesh = undefined;
 let idealRotationSpeed = 0.01;
 let rotationSpeed = 0;
 

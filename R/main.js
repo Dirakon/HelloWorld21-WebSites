@@ -156,14 +156,11 @@ function move(xIncrement,yIncrement=1) {
     currentCoords.x+=xIncrement;
 
     // Если мы натолкнулись на какую-то фигуру (может случиться только при боковом движении, т.к. уже проведена проверка
-    // на нахождение фигур под нами), то возвращаем всё как было и создаём новую фигуру
+    // на нахождение фигур под нами), то мы просто игнорируем этот ход.
     if (containsType(currentCoords,currentShapeDescription,'figure')){
         currentCoords.y-=yIncrement;
         currentCoords.x-=xIncrement;
         fillWithColor(currentCoords,currentShapeDescription,currentColor,'figure');
-        spawnNewShape();
-        // Звук приземления.
-        (new Audio('https://rpg.hamsterrepublic.com/wiki-images/d/db/Crush8-Bit.ogg')).play();
         return;
     }
 
